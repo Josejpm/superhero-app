@@ -1,10 +1,15 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import {useHistory} from 'react-router-dom'
 import {useFormik} from 'formik';
 import axios from 'axios';
+import AuthContext from '../context/authContext';
+
+
 
 const LoginForm = () => {
     const history = useHistory();
+    const context = useContext(AuthContext);
+    const { authUser }=context;
 
     const validate = (values)=>{
         const errors = {};
@@ -32,20 +37,46 @@ const LoginForm = () => {
 
     const handleSubmit = async (values)=>{
 
-      const {data} = await axios.post('http://challenge-react.alkemy.org',values);
-      localStorage.setItem('superHero-token',data.token);
-      history.push('/home')
+      try {
+        const {data} = await axios.post('http://challenge-react.alkemy.org',values);
+        localStorage.setItem('superHero-token',data.token);
+
+        authUser(data.token);
+  
+        history.push('/home');
+
+      } catch (error) {
+        console.log(error.response.data.error);
+      }
 
     }
 
     return ( 
-        <form onSubmit={ formik.handleSubmit } >
+        <form className='form-container p-5' onSubmit={ formik.handleSubmit } >
 
-            <input onChange={formik.handleChange} type="email" name="email" id="email" placeholder="batman@heroes.com"/>
-            {formik.errors.email && <p>Error de email</p> }
-            <input onChange={formik.handleChange} type="password" name="password" id="password"/>
-            {formik.errors.password && <p>Error de pass</p> }
-            <input type="submit" value="Sign In" />
+            <label htmlFor="email">Email</label>
+            <input
+              type="email" 
+              name="email"
+              className='form-control mb-5'
+              id="email" 
+              placeholder="batman@heroes.com"
+              onChange={formik.handleChange} 
+            />
+
+            {formik.errors.email && <p>{formik.errors.email}</p> }
+
+            <label htmlFor="password">Password</label>
+            <input 
+              type="password" 
+              name="password" 
+              id="password"
+              className='form-control mb-5'
+              onChange={formik.handleChange} 
+            />
+
+            {formik.errors.password && <p>{formik.errors.password}</p> }
+            <input className='btn btn-primary' type="submit" value="Sign In" />
 
         </form>
      );

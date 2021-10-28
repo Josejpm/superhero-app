@@ -1,24 +1,23 @@
-import React,{useEffect} from 'react';
+import React,{useEffect,useContext} from 'react';
 import {Route,Redirect} from 'react-router-dom';
+import AuthContext from '../context/authContext';
 
 const PrivateRoute = ({component:Component, ...props}) => {
 
-    let token;
+    const authContext = useContext(AuthContext);
+    const {auth,authUser}=authContext;
 
     useEffect(()=>{
-        
-        token = localStorage.getItem('superHero-token');
+        const LSToken = localStorage.getItem('superHero-token');
+        authUser(LSToken)
         // eslint-disable-next-line
     },[])
 
-    // En la siguiente sintaxis, si el usuario no esta autenticado redirecciona a la pag ppal de inicio de sesion
-    // Si el usuario esta autenticado envia el componente hijo, en este caso proyectos
-    
-    console.log(token)
+    console.log(auth);
     return ( 
         <Route
             {...props} 
-            render= {props=>token
+            render= {props=> !auth
             ? (
                 <Redirect to="/" />
             ) 

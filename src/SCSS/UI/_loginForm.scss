@@ -1,0 +1,10 @@
+@use '../base/mixins' as m;
+@use '../base/variables' as v;
+
+.form-container{
+
+    width: 40rem ;
+    background-color: v.$primary;
+    margin: 0 auto;
+
+}
