@@ -4,6 +4,7 @@ import Home from './pages/Home';
 import './App.css';
 
 import Login from './pages/Login';
+import PrivateRoute from './pages/PrivateRoute';
 
 function App() {
   return (
@@ -11,7 +12,8 @@ function App() {
       <Router>
         <Switch>
           <Route exact path="/" component={ Login }/>
-          <Route exact path="/home" component={ Home } />
+          <PrivateRoute exact path="/home" component={Home} />
+          {/* <Route exact path="/home" component={ Home } /> */}
           <Redirect to={Login}/>
         </Switch>
       </Router>
