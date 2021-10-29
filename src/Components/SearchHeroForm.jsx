@@ -27,6 +27,11 @@ const SearchHeroForm = () => {
 
     const handleSubmit = async ({hero})=>{
         const searchedHeroes = await axios (`https://www.superheroapi.com/api.php/10159538758842375/search/${hero}`)
+        console.log(searchedHeroes)
+        if(searchedHeroes.data.response==='error'){
+            console.log(searchedHeroes.data.error)
+            return
+        }
         setFoundHeroes(searchedHeroes.data.results);
         history.push('/search-result')
     }

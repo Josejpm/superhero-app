@@ -4,16 +4,22 @@ import HeroesContext from './heroesContext';
 
 const HeroesProvider = (props) => {
 
-    const [heroList,setHeroList]=useState([1,25,10,15]);
+    const [heroesData,setHeroesData]=useState([])
     const [foundHeroes,setFoundHeroes]=useState([]);
+    const [errorMsg,setErrorMsg]=useState(null)
+
 
 
     return ( 
         <HeroesContext.Provider
             value={{
-                heroList,
+                heroesData,
                 foundHeroes,
-                setFoundHeroes
+                errorMsg,
+                setFoundHeroes,
+                setHeroesData,
+                setErrorMsg
+
             }}
         >
 

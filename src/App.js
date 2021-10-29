@@ -16,9 +16,13 @@ function App() {
         <Switch>
           <AuthProvider>
             <HeroesProvider>
-              <Route exact path="/" component={ Login }/>
+              <Route exact path="/">
+                <Login/>
+              </Route>
               {/* <PrivateRoute exact path="/home" component={Home} /> */}
-              <Route exact path="/home" component={ Home } />
+              <Route exact path="/home">
+                <Home/>
+              </Route>
               <Route exact path="/search-result" component={ SearchedHeroesList } />
               {/* <Redirect to='/'/> */}
             </HeroesProvider>
