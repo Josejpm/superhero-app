@@ -52,31 +52,33 @@ const LoginForm = () => {
     }
 
     return ( 
-        <form className='form-container p-5' onSubmit={ formik.handleSubmit } >
+        <form className='login-form__container p-5' onSubmit={ formik.handleSubmit } >
 
             <label htmlFor="email">Email</label>
             <input
+              autoComplete='off'
               type="email" 
               name="email"
-              className='form-control mb-5'
+              className='form-control-plaintext login-form__input'
               id="email" 
               placeholder="batman@heroes.com"
               onChange={formik.handleChange} 
             />
 
-            {formik.errors.email && <p>{formik.errors.email}</p> }
+            {formik.errors.email && <p className='alert alert-danger mt-2' >{formik.errors.email}</p> }
 
             <label htmlFor="password">Password</label>
             <input 
               type="password" 
               name="password" 
               id="password"
-              className='form-control mb-5'
+              className='form-control-plaintext login-form__input'
+              placeholder='Your password here'
               onChange={formik.handleChange} 
             />
 
-            {formik.errors.password && <p>{formik.errors.password}</p> }
-            <input className='btn btn-primary' type="submit" value="Sign In" />
+            {formik.errors.password && <p className='alert alert-danger mt-2'>{formik.errors.password}</p> }
+            <input className='btn btn-outline-primary mt-4' type="submit" value="Sign In" />
 
         </form>
      );

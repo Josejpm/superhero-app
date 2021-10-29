@@ -14,16 +14,21 @@ const TeamCard = ({hero}) => {
         setHeroesData(newHeroesList)
     }
 
+    const powerstatsArr = Object.entries(hero.powerstats)
+    console.log(powerstatsArr);
+
     return (
       <Fragment>
-        <div className="card" style={{ width: "18rem" }}>
+        <div className="card" style={{ width: "20rem" }}>
           <div className="card-body">
-            <img src={hero.image.url} alt="Superhero" />
             <h5 className="card-title">{hero.name}</h5>
-            <button className="btn btn-danger" onClick={deleteHero}>
-              {" "}
-              Delete{" "}
-            </button>
+            <img src={hero.image.url} alt="Superhero" />
+            <ul>
+              {powerstatsArr.map(stat=>(
+                <li>{`${stat[0].toUpperCase()}: ${stat[1]}`}</li>
+              ))}
+            </ul>
+            <button className="btn btn-danger" onClick={deleteHero}>Delete</button>
             <button
               type="button"
               className="btn btn-primary"
@@ -33,7 +38,7 @@ const TeamCard = ({hero}) => {
               More Info..
             </button>
           </div>
-        </div>
+        </div> {/*  Card */}
         <div
           className="modal fade"
           id={`id${hero.id}`}

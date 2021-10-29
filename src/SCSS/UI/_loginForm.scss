@@ -1,10 +1,21 @@
 @use '../base/mixins' as m;
 @use '../base/variables' as v;
 
-.form-container{
+.login-form__container{
 
-    width: 40rem ;
+    max-width: 40rem ;
+    width: 80%;
     background-color: v.$primary;
     margin: 0 auto;
+    box-shadow: 0px 16px 10px 0px #def2f149;
 
+    label{
+        color: v.$light;
+    }
+
+}
+
+.login-form__input{
+    border-bottom: 1px solid v.$light;
+    color: v.$white;
 }

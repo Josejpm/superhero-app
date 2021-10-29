@@ -3,6 +3,7 @@ import axios from 'axios';
 import HeroesContext from '../context/heroesContext';
 import SearchHeroForm from '../Components/SearchHeroForm';
 import TeamList from '../Components/TeamList';
+import TeamStats from '../Components/TeamStats';
 //import {getHeroById} from '../services/heroesServices';
 
 
@@ -14,6 +15,7 @@ const Home = () => {
             <h1>Home</h1>
             <SearchHeroForm/>
             <TeamList heroesData={heroesData}/>
+            <TeamStats heroesData={heroesData} />
             
         </Fragment>
      );
