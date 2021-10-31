@@ -7,7 +7,7 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 import SerchResult from './pages/SearchResult';
 
-import MainLayout from './Components/MainLayout';
+import MainLayout from './components/MainLayout';
 
 function App() {
   return (
