@@ -2,16 +2,22 @@ import React, {Fragment, useContext } from 'react';
 import HeroesContext from '../context/HeroesContext';
 import SearchedHeroCard from '../components/SearchedHeroCard';
 import nodata from '../assets/img/nodata.svg'
-import { Redirect } from 'react-router-dom';
+import { Redirect, useHistory } from 'react-router-dom';
 
 
 const SerchResult = () => {
+    const history = useHistory()
     const heroesContext = useContext(HeroesContext);
     const {foundHeroes,notFound,errorMsg} = heroesContext;
+    
 
     const token = localStorage.getItem('superHero-token');
     if(!token){
         return <Redirect to="/" />
+    }
+
+    const handleClick = ()=>{
+        history.push('/home');
     }
 
     return ( 
@@ -36,6 +42,7 @@ const SerchResult = () => {
                 &&  <div> 
                         <p className='nodata-text' > {notFound} </p>  
                         <img className='no-data' src={nodata} alt="not found"/>
+                        <button className="form-button small" onClick={handleClick} > Back Home </button>
                     </div> 
             }
 
