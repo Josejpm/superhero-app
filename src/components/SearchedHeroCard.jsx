@@ -1,6 +1,6 @@
 import React,{useContext} from 'react';
 import { useHistory } from 'react-router-dom';
-import HeroesContext from '../context/heroesContext';
+import HeroesContext from '../context/HeroesContext';
 
 const SearchedHeroCard = ({hero}) => {
     const history = useHistory();
@@ -19,7 +19,7 @@ const SearchedHeroCard = ({hero}) => {
             setTimeout(() => {
                 setErrorMsg(null)
                 history.push('/home');
-            }, 2000);
+            }, 3000);
             return
         }
 
@@ -28,7 +28,7 @@ const SearchedHeroCard = ({hero}) => {
             setTimeout(() => {
                 setErrorMsg(null)
                 history.push('/home');
-            }, 2000);
+            }, 3000);
             return
         }
 
@@ -37,7 +37,7 @@ const SearchedHeroCard = ({hero}) => {
             setTimeout(() => {
                 setErrorMsg(null)
                 history.push('/home');
-            }, 2000);
+            }, 3000);
             return
         }
 
@@ -46,7 +46,7 @@ const SearchedHeroCard = ({hero}) => {
             setTimeout(() => {
                 setErrorMsg(null)
                 history.push('/home');
-            }, 2000);
+            }, 3000);
             return
         }
 
@@ -55,11 +55,11 @@ const SearchedHeroCard = ({hero}) => {
     }
 
     return (
-        <div className="card" style={{width:'18rem'}} >
+        <div className="card hero__card ">
             <div className="card-body">
                 <img src={hero.image.url} alt="Superhero" />
                 <h5 className="card-title">{hero.name}</h5>
-                <button className="btn btn-primary" onClick={ handleClick } >Add Hero</button>
+                <button className="form-button small" onClick={ handleClick } >Add Hero</button>
             </div>
         </div>  
     );

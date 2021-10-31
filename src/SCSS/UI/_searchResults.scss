@@ -1,0 +1,44 @@
+@use '../base/mixins' as m;
+@use '../base/variables' as v;
+
+.search-result__grid{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 1rem;
+    row-gap: 2rem;
+    padding-bottom: 2rem;
+}
+
+.search-result__heading{
+    text-align: center;
+    font-weight: bold;
+}
+
+.search-result__term{
+    text-align: center;
+    color: v.$white;
+    margin-bottom: 1rem;
+}
+
+.nodata-text{
+    color: v.$white;
+    text-align: center;
+    text-transform: capitalize;
+    margin-bottom: 0;
+}
+
+.no-data{
+    width: 80%;
+    margin: 0 auto;
+
+    @include m.desktop{
+        width: 30%;
+    }
+}
+
+.error-msg{
+    position: fixed;
+    top: 0%;
+}
+

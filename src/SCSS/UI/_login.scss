@@ -2,9 +2,19 @@
 @use '../base/variables' as v;
 
 
-.login__grid{
+.login__container{
+    @include m.desktop{
+        height: 100vh;
+    }
 
-    @include m.tablet{
+    display: flex;
+    align-items: center;
+}
+
+.login__grid{
+    width: 100%;
+
+    @include m.desktop{
         display: grid;
         grid-template-columns: repeat(2,1fr);
         align-items: center;
@@ -12,14 +22,18 @@
 }
 
 .login__heading{
+
     text-align: center;
     font-weight: 700;
-    color: v.$light;
+    font-size: 4rem;
+    @include m.tablet{
+        font-size: 6rem;
+    }
 }
 
 .login__image{
 
-    @include m.tablet{
+    @include m.desktop{
         margin-top: 0;
     }
 

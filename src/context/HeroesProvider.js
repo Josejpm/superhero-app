@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
-import HeroesContext from './heroesContext';
+import HeroesContext from './HeroesContext';
 
 
 const HeroesProvider = (props) => {
 
     const [heroesData,setHeroesData]=useState([])
     const [foundHeroes,setFoundHeroes]=useState([]);
-    const [errorMsg,setErrorMsg]=useState(null)
-
+    const [errorMsg,setErrorMsg]=useState(null);
+    const [searchedHero,setSearchedHero] = useState('');
+    const [notFound,setNotFound] = useState(null);
 
 
     return ( 
@@ -16,9 +17,13 @@ const HeroesProvider = (props) => {
                 heroesData,
                 foundHeroes,
                 errorMsg,
+                notFound,
+                searchedHero,
                 setFoundHeroes,
                 setHeroesData,
-                setErrorMsg
+                setErrorMsg,
+                setSearchedHero,
+                setNotFound
 
             }}
         >

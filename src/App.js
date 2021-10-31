@@ -1,36 +1,40 @@
-import { Fragment } from 'react';
-import {BrowserRouter as Router,Switch,Route,Redirect} from 'react-router-dom';
-import Home from './pages/Home';
+import {BrowserRouter as Router,Switch,Route} from 'react-router-dom';
 import './SCSS/app.scss'
 
-import Login from './pages/Login';
-import PrivateRoute from './pages/PrivateRoute';
-import AuthProvider from './context/AuthProvider';
 import HeroesProvider from './context/HeroesProvider';
-import SearchedHeroesList from './Components/SearchedHeroesList';
+
+import Home from './pages/Home';
+import Login from './pages/Login';
+import SerchResult from './pages/SearchResult';
+
+import MainLayout from './Components/MainLayout';
 
 function App() {
   return (
-    <Fragment>
       <Router>
         <Switch>
-          <AuthProvider>
             <HeroesProvider>
+              
               <Route exact path="/">
                 <Login/>
               </Route>
-              {/* <PrivateRoute exact path="/home" component={Home} /> */}
+
               <Route exact path="/home">
-                <Home/>
+                <MainLayout>
+                  <Home/>
+                </MainLayout>
               </Route>
-              <Route exact path="/search-result" component={ SearchedHeroesList } />
-              {/* <Redirect to='/'/> */}
+
+              <Route exact path="/search-result">
+                <MainLayout>
+                  <SerchResult/>
+                </MainLayout>
+              </Route>
+
             </HeroesProvider>
-          </AuthProvider>
         </Switch>
       </Router>
       
-    </Fragment>
   );
 }
 

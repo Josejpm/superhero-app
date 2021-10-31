@@ -1,0 +1,53 @@
+@use '../base/mixins' as m;
+@use '../base/variables' as v;
+
+.hero__card{
+    
+    width: 90%;
+    box-shadow: 6px 6px 10px 0px #def2f13a;
+    background-color: v.$primary ;
+    margin: 0 auto;
+    margin-bottom: 2rem;
+
+    
+    @include m.tablet{
+        flex: 0 0  calc( 50% - 1rem )
+    }
+
+    @include m.desktop{
+        flex: 0 0  calc( 30% - 1rem );
+        margin-bottom: 0;
+    }
+
+
+    img{
+        width: 80%;
+        margin: 0 auto;
+    }
+
+    .card-title{
+        text-align: center;
+        font-size: 2rem;
+        font-weight: 700;
+    }
+
+    .card__buttons{
+        display: flex;
+        justify-content: space-around;
+    }
+
+    .card__info{
+        width:60%;
+        margin: 0 auto;
+    }
+
+    .powerstats{
+        display: flex;
+        justify-content: space-between;
+        font-size: 1.3rem;
+        span{
+            text-transform: capitalize;
+            font-weight: 700;
+        }
+    }
+}

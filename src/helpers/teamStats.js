@@ -12,7 +12,9 @@ export const teamStats = (heroesData)=>{
         StatsSum['power']=StatsSum['power']+Number(actualPosition.powerstats.power);
         StatsSum['combat']=StatsSum['combat']+Number(actualPosition.powerstats.combat);
         StatsSum['height']=StatsSum['height']+Number(actualPosition.appearance.height[1].slice(0,-3));
-        StatsSum['weight']=StatsSum['weight']+Number(actualPosition.appearance.weight[1].slice(0,-3));
+        StatsSum['weight']=StatsSum['weight']+Number(actualPosition.appearance.weight[0].slice(0,-2));
+
+        console.log(actualPosition.appearance.weight[0])
 
         return StatsSum
 

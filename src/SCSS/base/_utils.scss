@@ -1,19 +1,11 @@
-@use 'variables' as v;
+@use './variables' as v;
 @use './mixins' as m;
 
-.text-center {
-    text-align: center;
-}
 
-.bg-primary {
-    background-color: v.$primary;
-}
+.custom-gradient{
+    background: linear-gradient(to right, v.$orange 0%, v.$darkenPrimary 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
 
-.section{
-    padding: 3rem 0;
-
-    @include m.tablet{
-        padding: 8rem 0;
-    }
-    
 }

@@ -1,21 +1,40 @@
-import React, { useState,useContext, useEffect, Fragment } from 'react';
-import axios from 'axios';
-import HeroesContext from '../context/heroesContext';
-import SearchHeroForm from '../Components/SearchHeroForm';
-import TeamList from '../Components/TeamList';
-import TeamStats from '../Components/TeamStats';
-//import {getHeroById} from '../services/heroesServices';
+import React, { useContext, Fragment } from 'react';
+import HeroesContext from '../context/HeroesContext';
+import TeamList from '../components/TeamList';
+import TeamStats from '../components/TeamStats';
+import { Redirect } from 'react-router-dom';
+
 
 
 const Home = () => {
     const heroesContext = useContext(HeroesContext);
     const {heroesData} = heroesContext;
+
+    const token = localStorage.getItem('superHero-token');
+    if(!token){
+        return <Redirect to="/" />
+    }
+
     return ( 
         <Fragment>
-            <h1>Home</h1>
-            <SearchHeroForm/>
-            <TeamList heroesData={heroesData}/>
-            <TeamStats heroesData={heroesData} />
+            <div className="container">
+                
+                <div className="row justify-content-center ">
+                    <h1 className=" home__title custom-gradient" >Superheroes Team</h1>
+                </div>
+                
+                <div className="info-container">
+
+                    <div className="info-left" >
+                        <TeamList heroesData={heroesData}/>
+                    </div>
+
+                    <div className="info-right">
+                        <TeamStats heroesData={heroesData} />
+                    </div>
+
+                </div>
+            </div>
             
         </Fragment>
      );
